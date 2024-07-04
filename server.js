@@ -28,10 +28,10 @@ app.get('/', (req, res) => {
     res.status(200).send('Deployed Successfully.');
 })
 
-app.get('/merchant-session/new', function(req, res) {
+app.get('/merchant-session/new', (req, res) => {
     var merchantIdentifier = 'merchant.my-first-project-dd9fe.web.app';
     var uri = req.query.validationURL || 'https://apple-pay-gateway.apple.com/paymentservices/paymentSession';
-
+    var merchantSession = "";
     var options = {
         uri: uri,
         json: {
@@ -49,17 +49,17 @@ app.get('/merchant-session/new', function(req, res) {
         }
     };
 
-    request.post(options, function(err, res, body) {
+    request.post(options, function(err, response, body) {
         if(body){
             console.log('Body ==> ' + body);
             delete body.displayName;
         }
 
-        res.send(body);
+        res.status(200).send(body);
+        // console.log(res.statusCode)
         console.log(body);
         console.log('POST');
     });
-
 });
 
 
