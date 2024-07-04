@@ -28,7 +28,7 @@ app.get('/', (req, res) => {
     res.status(200).send('Deployed Successfully.');
 })
 
-app.get('/merchant-session/new', (req, res) => {
+app.post('/merchant-session/new', (req, res) => {
     var merchantIdentifier = 'merchant.my-first-project-dd9fe.web.app';
     var uri = req.query.validationURL || 'https://apple-pay-gateway.apple.com/paymentservices/paymentSession';
     var merchantSession = "";
