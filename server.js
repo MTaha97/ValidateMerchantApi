@@ -52,7 +52,7 @@ app.post('/merchant-session/new', (req, res) => {
     request.post(options, function(err, response, body) {
         if(body){
             console.log('Body ==> ' + body);
-            delete body.displayName;
+            // delete body.displayName;
         }
 
         res.status(200).send(body);
